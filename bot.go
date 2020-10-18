@@ -70,15 +70,15 @@ func getUserAgent() (string) {
 	a := rand.Intn(100)
 	var userAgent string
 	if (a > 5 && a < 10) {
-		userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; WOW64; Trident/4.0; SLCC1)"
+		userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)"
 	} else if (a > 10 && a < 20) {
-		userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
+		userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063"
 	} else if (a > 20 && a < 30) {
 		userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20120101 Firefox/33.0"
 	} else if (a > 30 && a < 40) {
 		userAgent = "Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14"
 	} else if (a > 40) {
-		userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"
+		userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
 	}
 
 	return userAgent
